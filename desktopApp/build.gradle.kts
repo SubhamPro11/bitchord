@@ -153,6 +153,10 @@ tasks.withType<Test> {
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
+        // jdk.jsobject provides netscape.javascript.JSObject used by DesktopPoTokenWebView
+        // (JavaFX WebEngine's Java–JavaScript bridge). In the module system (JDK 9+) the
+        // package is not on the default classpath; this makes it visible to kotlinc.
+        freeCompilerArgs.add("-Xadd-modules=jdk.jsobject")
     }
 }
 
