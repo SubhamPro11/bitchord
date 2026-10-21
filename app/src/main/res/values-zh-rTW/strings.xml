@@ -208,6 +208,12 @@
     <string name="reduce_dynamic_blur_subtitle">在整個應用中用純色填充替代磨砂玻璃效果</string>
     <string name="full_screen_cover_art">全屏封面</string>
     <string name="animated_cover_art">動態封面</string>
+    <string name="artist_signatures">藝人簽名</string>
+    <string name="artist_signatures_subtitle">當 Apple Music 沒有標題徽標時顯示手寫簽名</string>
+    <string name="artist_signatures_url">簽名 API URL</string>
+    <string name="artist_signatures_url_hint">https://signatures.example.com</string>
+    <string name="artist_signatures_unconfigured">未設定 — 點選以設定 API URL</string>
+    <string name="artist_signatures_test_failed">無法連線到該 URL 的 API</string>
     <string name="synced_lyrics">同步歌詞</string>
     <string name="synced_lyrics_subtitle">隨著演唱在播放器上高亮顯示歌詞</string>
     <string name="lyrics_sources">歌詞來源</string>
@@ -1207,6 +1213,7 @@
         <item quantity="other">已新增到 %1$d 個播放列表</item>
     </plurals>
     <string name="party_queue_full">佇列已滿（派對最多 %d 首歌曲）</string>
+    <string name="signed_by">由 %1$s 簽名</string>
 
     <string name="paxsenix_api_key">PaxSenix API key</string>
 
