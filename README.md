@@ -18,7 +18,7 @@
 
 <br/>
 
-[**Download**](#download) · [**Features**](#features) · [**Contributing**](#contributing) · [**Support**](#support) · [**Disclaimer**](#disclaimer)
+[**Download**](#download) · [**Features**](#features) · [**Desktop**](#desktop) · [**Contributing**](#contributing) · [**Support**](#support) · [**Disclaimer**](#disclaimer)
 
 <br/>
 
@@ -97,6 +97,58 @@ Grab the latest signed APK from the [Releases](https://github.com/kushagrasinghx
 For the Windows and Linux desktop app, see [DESKTOP.md](DESKTOP.md).
 
 </div>
+
+---
+
+<h1 align="center"><a id="desktop"></a>🖥️ Desktop (Windows)</h1>
+
+This fork includes fixes that allow BitChord's desktop app to build and run correctly on **Windows with modern JDKs (Java 21+)**.
+
+### Requirements
+
+| Requirement | Details |
+|---|---|
+| **JDK** | Eclipse Temurin 21 LTS — [Download](https://adoptium.net/temurin/releases/?version=21) |
+| **OS** | Windows 10 / 11 (x64) |
+| **Gradle** | 9.7.1 (bundled via wrapper — no manual install needed) |
+
+### Quick Start — Run from Source
+
+```powershell
+# Clone this fork
+git clone https://github.com/SubhamPro11/bitchord.git
+cd bitchord
+
+# Run the desktop app directly
+.\gradlew.bat :desktopApp:run
+```
+
+### Build a Windows Installer
+
+```powershell
+# .exe installer (recommended for most users)
+.\gradlew.bat :desktopApp:packageExe
+# Output: desktopApp\build\compose\binaries\main\exe\BitChord-1.8.29.exe
+
+# .msi installer (for enterprise / managed deployments)
+.\gradlew.bat :desktopApp:packageMsi
+# Output: desktopApp\build\compose\binaries\main\msi\BitChord-1.8.29.msi
+
+# Portable build — run without installing
+.\gradlew.bat :desktopApp:createDistributable
+# Output: desktopApp\build\compose\binaries\main\app\BitChord\BitChord.exe
+```
+
+> [!NOTE]
+> The packaged installers bundle their own JRE — end users do **not** need to install Java separately to run the `.exe` or `.msi`.
+
+### Windows Fixes Applied in This Fork
+
+| # | Problem | Fix |
+|---|---|---|
+| 1 | Gradle could not find Java 21 toolchain | Upgraded Gradle wrapper to 9.7.1; install [Temurin JDK 21](https://adoptium.net/temurin/releases/?version=21) |
+| 2 | `jdk.jsobject` module unavailable on the Kotlin compiler classpath | Added `-Xadd-modules=jdk.jsobject` to `kotlinc` args in `desktopApp/build.gradle.kts` |
+| 3 | `compileJava` (JDK 27) vs `compileKotlin` (JVM 21) target mismatch | Set `sourceCompatibility` and `targetCompatibility` to Java 21 |
 
 ---
 
